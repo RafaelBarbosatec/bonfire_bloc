@@ -5,7 +5,7 @@ cubits inside a `Bonfire`. It's inspired in `flame_bloc`
 
 ## Intalling
 
-Adds in yout `pubspec.yml`:
+Adds in your `pubspec.yml`:
 
 ```yml
 
@@ -13,7 +13,6 @@ Adds in yout `pubspec.yml`:
   flutter_bloc: ^8...
 
 ```
-
 
 ## How to use
 
