@@ -32,7 +32,7 @@ return BlocProvider(
 
 Listening to states changes at the component level can be done with two approaches:
 
-By using `BonfireBlocListener` component:
+By using `BonfireBlocListenable` component:
 
 
 ```dart
@@ -51,11 +51,11 @@ to a component:
 
 
 ```dart
-class Player extends PositionComponent
-  with FlameBlocReader<PlayerStatsBloc> {
+class Coin extends GameDecoration
+  with FlameBlocReader<PlayerInventoryBloc> {
 
   void takeHit() {
-    bloc.add(const PlayerDamaged());
+    bloc.add(const IncrementCoin());
   }
 }
 ```
@@ -63,10 +63,10 @@ class Player extends PositionComponent
 or
 
 ```dart
-class Player extends PositionComponent{
+class Coin extends GameDecoration{
 
   void takeHit() {
-    context.read<PlayerStatsBloc>().add(const PlayerDamaged());
+    context.read<PlayerInventoryBloc>().add(const IncrementCoin());
   }
 }
 ```
