@@ -1,13 +1,23 @@
 # bonfire_bloc 🔥🧱
 
-`bonfire_bloc` offers a simple and natural (as in similar to `flutter_bloc`) way to use blocs and
-cubits inside a `Bonfire`. It's inspired in `flame_bloc`
+Inspired by `flame_bloc`, `bonfire_bloc` offers a simple and natural way (similar to `flutter_bloc`) to use blocs and
+cubits inside a `Bonfire` game. 
 
-## Intalling
+## Installing
 
-Adds in your `pubspec.yml`:
+Simply run:
 
-```yml
+```bash
+
+flutter pub add bonfire_bloc
+flutter pub add bonfire
+flutter pub add flutter_bloc
+
+```
+
+Or add custom versions in your `pubspec.yaml`:
+
+```yaml
 
   bonfire: ^3...
   flutter_bloc: ^8...
@@ -16,8 +26,7 @@ Adds in your `pubspec.yml`:
 
 ## How to use
 
-Lets assume we have a bloc that handles player inventory, first we need to make it available to our
-game.
+Lets assume we have a bloc that handles player inventory. First, we need to make it available to our entire game.
 
 We can do that by using `BlocProvider` or `MultiBlocProvider` of the `flutter_bloc`:
 
@@ -30,10 +39,9 @@ return BlocProvider(
 );
 ```
 
-Listening to states changes at the component level can be done with two approaches:
+ Using the bloc at the component level can be done with two approaches:
 
-By using `BonfireBlocListenable` component:
-
+1) Listening to state changes by using `BonfireBlocListenable` mixin:
 
 ```dart
 class Player extends SimplePLayer
@@ -46,13 +54,12 @@ class Player extends SimplePLayer
 }
 ```
 
-If all your component need is to simply access a bloc, the `BonfireBlocReader` mixin can be applied
-to a component:
+2) Reading the values by using `BonfireBlocReader` mixin:
 
 
 ```dart
 class Coin extends GameDecoration
-  with FlameBlocReader<PlayerInventoryBloc> {
+  with BonfireBlocReader<PlayerInventoryBloc> {
 
   void takeHit() {
     bloc.add(const IncrementCoin());
@@ -60,7 +67,7 @@ class Coin extends GameDecoration
 }
 ```
 
-or
+or with `context.read`:
 
 ```dart
 class Coin extends GameDecoration{
@@ -72,4 +79,3 @@ class Coin extends GameDecoration{
 ```
 
 Note that one limitation of the mixin is that it can access only a single bloc.
-
