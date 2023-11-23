@@ -1,6 +1,6 @@
 name: bonfire_bloc
 description: Integration for the Bloc state management library to Bonfire games.
-version: 0.0.1+1
+version: 0.0.2
 homepage: https://github.com/RafaelBarbosatec/bonfire_bloc
 
 environment:
